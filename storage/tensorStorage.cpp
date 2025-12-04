@@ -26,12 +26,15 @@ struct arena_allocator
   arena_allocator(size_type _s) :
       __memory_(new value_type[_s]),
       __offset_(0),
-      __size_(_s) {}
+      __size_(_s)
+  {
+  }
 
   arena_allocator(const arena_allocator&)            = delete;
   arena_allocator& operator=(const arena_allocator&) = delete;
 
-  pointer allocate(size_type _bytes, size_type _alignment = alignof(std::max_align_t)) {
+  pointer allocate(size_type _bytes, size_type _alignment = alignof(std::max_align_t))
+  {
     size_type current = __memory_ + __offset_;
     size_type aligned = align_up(current, _alignment);
     size_type padding = aligned - reinterpret_cast<std::uintptr_t>(__memory_);
@@ -71,10 +74,14 @@ struct TENSOR_LIBRARY_API array
   array() :
       __size_(0),
       __begin_(nullptr),
-      __end_(nullptr) {}
+      __end_(nullptr)
+  {
+  }
 
   array(const std::size_t s) :
-      __size_(s) {}
+      __size_(s)
+  {
+  }
 };  // array
 
 
@@ -85,16 +92,19 @@ class TENSOR_LIBRARY_API ArenaAllocator
       :
       __block_size_(_block_size),
       __current_block_(nullptr),
-      __freelist_(nullptr) {
+      __freelist_(nullptr)
+  {
     allocate_block();
   }
 
-  ~ArenaAllocator() {
+  ~ArenaAllocator()
+  {
     free_all_blocks();
     free_freelist();
   }
 
-  void* allocate(std::size_t _size, std::size_t _alignment = alignof(std::max_align_t)) {
+  void* allocate(std::size_t _size, std::size_t _alignment = alignof(std::max_align_t))
+  {
     uintptr_t   current_ptr = reinterpret_cast<uintptr_t>(__current_block_->__ptr_);
     uintptr_t   aligned_ptr = (current_ptr + _alignment - 1) & ~(_alignment - 1);
     std::size_t padding     = aligned_ptr - current_ptr;
@@ -111,7 +121,8 @@ class TENSOR_LIBRARY_API ArenaAllocator
     return result;
   }
 
-  void reset() {
+  void reset()
+  {
     Block* b = __blocks_;
     while (b)
     {
@@ -154,7 +165,8 @@ class TENSOR_LIBRARY_API ArenaAllocator
   Block*      __current_block_ = nullptr;
   Block*      __freelist_      = nullptr;
 
-  void allocate_block(std::size_t __size_ = 0) {
+  void allocate_block(std::size_t __size_ = 0)
+  {
     std::size_t alloc_size = (__size_ ? __size_ : __block_size_) + sizeof(Block);
     uint8_t*    raw        = static_cast<uint8_t*>(std::malloc(alloc_size));
     assert(raw != nullptr && "Out of memory!");
@@ -185,7 +197,8 @@ class TENSOR_LIBRARY_API ArenaAllocator
     __current_block_ = block;
   }
 
-  void free_all_blocks() {
+  void free_all_blocks()
+  {
     Block* b = __blocks_;
     while (b)
     {
@@ -197,7 +210,8 @@ class TENSOR_LIBRARY_API ArenaAllocator
     __current_block_ = nullptr;
   }
 
-  void free_freelist() {
+  void free_freelist()
+  {
     while (__freelist_)
     {
       Block* __next_ = __freelist_->__next_;
