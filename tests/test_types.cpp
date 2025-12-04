@@ -1,5 +1,6 @@
-#include "tensor.hpp"
 #include <gtest/gtest.h>
+
+#include "tensor.hpp"
 
 
 TEST(TypesTest, IntToInt32Conversion)
