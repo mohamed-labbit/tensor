@@ -164,11 +164,6 @@ arch::tensor<_Tp>& arch::tensor<_Tp>::operator+=(const_reference value)
     throw error::operator_error("Value type must have a plus operator");
   }
 
-  for (index_type i = 0; i < this->size(0); ++i)
-  {
-    (*this)[i] = (*this)[i] + value;
-  }
-
   container_type& a = this->storage_();
 
   for (auto& elem : a)
@@ -210,21 +205,23 @@ arch::tensor<_Tp> arch::tensor<_Tp>::operator-(const tensor& other) const
 template<class _Tp>
 arch::tensor<_Tp> arch::tensor<_Tp>::operator-(const value_type value) const
 {
+/*
   if (using_neon())
   {
     return internal::simd::neon::operator_minus(*this, value);
   }
+*/
 
   if constexpr (!internal::concepts::has_minus_operator_v<value_type>)
   {
     throw error::operator_error("Value type must have a minus operator");
   }
 
-  container_type d(this->size(0));
+  container_type& a = this->storage_();
 
-  for (index_type i = 0; i < this->size(0); ++i)
+  for (auto& elem : a)
   {
-    d[i] = (*this)[i] - value;
+    elem = elem - value;
   }
 
   return self(*this);
