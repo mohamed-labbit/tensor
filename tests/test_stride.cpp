@@ -1,8 +1,9 @@
+#include <gtest/gtest.h>
+
+#include <vector>
+
 #include "stride.hpp"
 #include "tensor.hpp"
-
-#include <gtest/gtest.h>
-#include <vector>
 
 
 using strides = shape::Strides;
