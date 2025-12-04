@@ -76,6 +76,9 @@ add_executable(tensor_test
     tests/test_linear/test_product.cpp
     tests/test_linear/test_relu.cpp
     tests/test_linear/test_slice.cpp
+    tests/test_logical/test_and.cpp
+    tests/test_logical/test_or.cpp
+    tests/test_logical/test_xor.cpp
 )
 
 # Link the GTest library first
