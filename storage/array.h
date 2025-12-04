@@ -21,23 +21,28 @@ struct array
   TENSOR_LIBRARY_API array() :
       __size_(0),
       __begin_(nullptr),
-      __end_(nullptr) {}
+      __end_(nullptr)
+  {
+  }
 
   TENSOR_LIBRARY_API array(const size_type _s, const value_type _v = static_cast<value_type>(0)) :
-      __size_(_s) {
+      __size_(_s)
+  {
     __begin_ = reinterpret_cast<pointer>(__allocator_.allocate(_s));
     __end_   = __begin_ + _s;
     fill(_v);
   }
 
   TENSOR_LIBRARY_API array(const array& other) :
-      __size_(other.__size_) {
+      __size_(other.__size_)
+  {
     __begin_ = reinterpret_cast<pointer>(__allocator_.allocate(__size_));
     std::uninitialized_copy(other.__begin_, other.__end_, __begin_);
     __end_ = __begin_ + __size_;
   }
 
-  TENSOR_LIBRARY_API array& operator=(const array& other) {
+  TENSOR_LIBRARY_API array& operator=(const array& other)
+  {
     if (this != &other)
     {
       if (this->__begin_)
@@ -55,13 +60,15 @@ struct array
 
   TENSOR_LIBRARY_API array(array&& other) TENSOR_NOEXCEPT: __size_(other.__size_),
                                                            __begin_(other.__begin_),
-                                                           __end_(other.__end_) {
+                                                           __end_(other.__end_)
+  {
     other.__begin_ = nullptr;
     other.__end_   = nullptr;
     other.__size_  = 0;
   }
 
-  TENSOR_LIBRARY_API array& operator=(array&& other) TENSOR_NOEXCEPT {
+  TENSOR_LIBRARY_API array& operator=(array&& other) TENSOR_NOEXCEPT
+  {
     if (this != &other)
     {
       if (this->__begin_)
@@ -79,7 +86,8 @@ struct array
     return *this;
   }
 
-  TENSOR_LIBRARY_API ~array() {
+  TENSOR_LIBRARY_API ~array()
+  {
     if constexpr (!std::is_trivially_destructible_v<T>)
     {
       for (pointer p = this->__begin_; p != this->__end_; ++p)
@@ -92,7 +100,8 @@ struct array
   TENSOR_LIBRARY_API T&       operator[](size_type i) { return this->__begin_[i]; }
   TENSOR_LIBRARY_API const T& operator[](size_type i) const { return this->__begin_[i]; }
 
-  TENSOR_LIBRARY_API T& at(size_type i) {
+  TENSOR_LIBRARY_API T& at(size_type i)
+  {
     if (i >= this->__size_)
     {
       throw std::out_of_range("index out of range");
@@ -117,7 +126,8 @@ struct array
 
   TENSOR_LIBRARY_API void fill(const T& value) { std::fill(this->__begin_, this->__end_, value); }
 
-  TENSOR_LIBRARY_API void clear() {
+  TENSOR_LIBRARY_API void clear()
+  {
     if (this->__begin_)
     {
       this->__allocator_.deallocate(this->__begin_, this->__size_);
@@ -126,7 +136,8 @@ struct array
     }
   }
 
-  TENSOR_LIBRARY_API void resize(const size_type _s) {
+  TENSOR_LIBRARY_API void resize(const size_type _s)
+  {
     if (_s == this->__size_)
     {
       return;
@@ -172,13 +183,15 @@ struct array
     this->__size_  = _s;
   }
 
-  TENSOR_LIBRARY_API bool operator==(const array& other) const {
+  TENSOR_LIBRARY_API bool operator==(const array& other) const
+  {
     return this->__size_ == other.__size_ && std::equal(this->__begin_, this->__end_, other.__begin_);
   }
 
   TENSOR_LIBRARY_API bool operator!=(const array& other) const { return !(*this == other); }
 
-  TENSOR_LIBRARY_API void swap(array& other) TENSOR_NOEXCEPT {
+  TENSOR_LIBRARY_API void swap(array& other) TENSOR_NOEXCEPT
+  {
     std::swap(this->__size_, other.__size_);
     std::swap(this->__begin_, other.__begin_);
     std::swap(this->__end_, other.__end_);
@@ -186,7 +199,8 @@ struct array
 
  private:
   // TODO: remove later after testing
-  void print() const {
+  void print() const
+  {
     for (size_type i = 0; i < this->__size_; ++i)
     {
       std::cout << this->__begin_[i] << ' ';
