@@ -1,6 +1,8 @@
-#include "tensor.hpp"
-#include <cmath>
 #include <gtest/gtest.h>
+
+#include <cmath>
+
+#include "tensor.hpp"
 
 
 using ten = arch::tensor<double>;
