@@ -1,2 +1,3 @@
-#include "tensor.hpp"
 #include <gtest/gtest.h>
+
+#include "tensor.hpp"
