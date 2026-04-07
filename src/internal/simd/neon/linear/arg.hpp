@@ -179,8 +179,7 @@ arch::tensor<_u64> argsort(const arch::tensor<_Tp>& t, _u64 d, bool ascending)
       neon_f32    cmp_vec    = vdupq_lane_f32(min2, 0);
       neon_u32    cmp_result = ascending ? vcltq_f32(data_vec, cmp_vec) : vcgtq_f32(data_vec, cmp_vec);
 
-      for (int j = 0; j < t.simd_width; ++j)
-        indices[i + j] = (cmp_result[j] ? i + j : i + j + 1);
+      for (int j = 0; j < t.simd_width; ++j) indices[i + j] = (cmp_result[j] ? i + j : i + j + 1);
     }
   }
   else if constexpr (std::is_signed_v<_Tp>)
@@ -193,8 +192,7 @@ arch::tensor<_u64> argsort(const arch::tensor<_Tp>& t, _u64 d, bool ascending)
       neon_s32  cmp_vec    = vdupq_lane_s32(min2, 0);
       neon_u32  cmp_result = ascending ? vcltq_s32(data_vec, cmp_vec) : vcgtq_s32(data_vec, cmp_vec);
 
-      for (int j = 0; j < t.simd_width; ++j)
-        indices[i + j] = (cmp_result[j] ? i + j : i + j + 1);
+      for (int j = 0; j < t.simd_width; ++j) indices[i + j] = (cmp_result[j] ? i + j : i + j + 1);
     }
   }
   else if constexpr (std::is_unsigned_v<_Tp>)
@@ -207,8 +205,7 @@ arch::tensor<_u64> argsort(const arch::tensor<_Tp>& t, _u64 d, bool ascending)
       neon_u32   cmp_vec    = vdupq_lane_u32(min2, 0);
       neon_u32   cmp_result = ascending ? vcltq_u32(data_vec, cmp_vec) : vcgtq_u32(data_vec, cmp_vec);
 
-      for (int j = 0; j < t.simd_width; ++j)
-        indices[i + j] = (cmp_result[j] ? i + j : i + j + 1);
+      for (int j = 0; j < t.simd_width; ++j) indices[i + j] = (cmp_result[j] ? i + j : i + j + 1);
     }
   }
 
@@ -223,4 +220,4 @@ arch::tensor<_u64> argsort(const arch::tensor<_Tp>& t, _u64 d, bool ascending)
   return arch::tensor<_u64>(std::move(indices));
 }
 
-}
+}  // namespace internal::simd::neon

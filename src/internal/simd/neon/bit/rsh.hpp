@@ -33,4 +33,4 @@ arch::tensor<_Tp>& bitwise_right_shift_(arch::tensor<_Tp>& t, const int amount)
   return t;
 }
 
-}
+}  // namespace internal::simd::neon

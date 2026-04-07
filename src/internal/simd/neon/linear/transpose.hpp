@@ -66,4 +66,4 @@ arch::tensor<_Tp> transpose(const arch::tensor<_Tp>& t)
   return ret;
 }
 
-}
+}  // namespace internal::simd::neon

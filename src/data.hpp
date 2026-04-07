@@ -12,7 +12,7 @@ inline arch::tensor<_Tp> arch::tensor<_Tp>::reshape_as(const tensor& other) cons
 }
 
 template<class _Tp>
-inline arch::tensor<_Tp>& arch::tensor<_Tp>::push_back(value_type v) 
+inline arch::tensor<_Tp>& arch::tensor<_Tp>::push_back(value_type v)
 {
   if (this->n_dims() != 1)
   {

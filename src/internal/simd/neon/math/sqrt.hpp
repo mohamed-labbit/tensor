@@ -50,4 +50,4 @@ arch::tensor<_Tp>& sqrt_(arch::tensor<_Tp>& t)
   return t;
 }
 
-}
+}  // namespace internal::simd::neon

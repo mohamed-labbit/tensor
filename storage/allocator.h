@@ -1,10 +1,11 @@
 #pragma once
 
-#include "macros.hpp"
 #include <algorithm>
 #include <cassert>
 #include <cstdlib>
 #include <memory>
+
+#include "macros.hpp"
 
 
 namespace storage::alloc {
@@ -167,4 +168,4 @@ struct TENSOR_LIBRARY_API arena_allocator
   arena_allocator(const arena_allocator&)            = delete;
   arena_allocator& operator=(const arena_allocator&) = delete;
 };
-};
+};  // namespace storage::alloc

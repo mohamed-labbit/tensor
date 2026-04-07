@@ -48,4 +48,4 @@ arch::tensor<_Tp>& sinc_(arch::tensor<_Tp>& t)
   return t;
 }
 
-}
+}  // namespace internal::simd::neon

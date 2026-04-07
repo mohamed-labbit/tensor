@@ -45,4 +45,4 @@ arch::tensor<_Tp>& bitwise_not_(arch::tensor<_Tp>& t)
   return t;
 }
 
-}
+}  // namespace internal::simd::neon

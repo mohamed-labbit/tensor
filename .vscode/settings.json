@@ -82,7 +82,8 @@
         "nonlinearoptimization": "cpp",
         "openglsupport": "cpp",
         "version": "cpp",
-        "cassert": "cpp"
+        "cassert": "cpp",
+        "cstddef": "cpp"
     },
     "editor.cursorStyle": "block"
 }

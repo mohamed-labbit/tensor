@@ -95,4 +95,4 @@ arch::tensor<_Tp>& floor_(arch::tensor<_Tp>& t)
   return t;
 }
 
-}
+}  // namespace internal::simd::neon

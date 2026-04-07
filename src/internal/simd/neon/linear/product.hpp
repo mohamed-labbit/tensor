@@ -129,4 +129,4 @@ arch::tensor<_Tp> dot(const arch::tensor<_Tp>& t, const arch::tensor<_Tp>& other
   return self({ret}, {1});
 }
 
-}
+}  // namespace internal::simd::neon

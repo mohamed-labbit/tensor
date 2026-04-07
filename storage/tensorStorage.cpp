@@ -1,5 +1,3 @@
-#include "macros.hpp"
-
 #include <algorithm>
 #include <cassert>
 #include <cstddef>
@@ -8,6 +6,8 @@
 #include <new>
 #include <unordered_map>
 #include <vector>
+
+#include "macros.hpp"
 
 
 template<typename _Tp>

@@ -16,8 +16,7 @@ arch::tensor<_Tp>& arch::tensor<_Tp>::transpose_()
     throw error::shape_error("In-place transpose is only supported for square tensors");
 
   for (index_type i = 0; i < rows; ++i)
-    for (index_type j = i + 1; j < cols; ++j)
-      std::swap((*this)[i * cols + j], (*this)[j * cols + i]);
+    for (index_type j = i + 1; j < cols; ++j) std::swap((*this)[i * cols + j], (*this)[j * cols + i]);
 
   return *this;
 }

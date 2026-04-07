@@ -6,12 +6,14 @@
 namespace internal::simd::neon {
 
 template<typename T>
-struct neon_type_selector {
+struct neon_type_selector
+{
   using type = void;
 };
 
 template<typename T>
-struct wide_neon_type_selector {
+struct wide_neon_type_selector
+{
   using type = void;
 };
 
@@ -1384,4 +1386,4 @@ neon_type<_u32> neon_cgeq(neon_type<T>& a, neon_type<T>& b)
   }
 }
 
-}
+}  // namespace internal::simd::neon

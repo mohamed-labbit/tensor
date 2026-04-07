@@ -210,4 +210,4 @@ struct array
   }
 };
 
-}
+}  // namespace storage

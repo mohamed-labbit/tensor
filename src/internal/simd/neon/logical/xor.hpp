@@ -83,4 +83,4 @@ arch::tensor<_Tp>& logical_xor_(arch::tensor<_Tp>& t, const _Tp value)
   return t;
 }
 
-}
+}  // namespace internal::simd::neon

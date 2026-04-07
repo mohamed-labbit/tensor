@@ -53,4 +53,4 @@ arch::tensor<_Tp> sum(const arch::tensor<_Tp>& t, const _u64 axis)
   return arch::tensor<_Tp>(std::move(ret_data), std::move(ret_sh));
 }
 
-}
+}  // namespace internal::simd::neon

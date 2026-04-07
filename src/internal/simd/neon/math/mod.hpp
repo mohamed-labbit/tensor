@@ -76,4 +76,4 @@ arch::tensor<_Tp>& fmod_(arch::tensor<_Tp>& t, const arch::tensor<_Tp>& other)
 
   return t;
 }
-}
+}  // namespace internal::simd::neon

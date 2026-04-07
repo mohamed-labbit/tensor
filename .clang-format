@@ -6,18 +6,18 @@ AlignEscapedNewlines: DontAlign
 AlignOperands: AlignAfterOperator
 AlignTrailingComments: true
 AllowAllParametersOfDeclarationOnNextLine: true
-AllowShortCaseLabelsOnASingleLine: false
-AllowShortEnumsOnASingleLine: false
+AllowShortCaseLabelsOnASingleLine: true
+AllowShortEnumsOnASingleLine: true
 AllowShortIfStatementsOnASingleLine: false
 AllowShortBlocksOnASingleLine: false
 AlwaysBreakTemplateDeclarations: Yes
-BasedOnStyle: WebKit
+BasedOnStyle: Google
 BitFieldColonSpacing: After
 BinPackParameters: false
 BreakBeforeBinaryOperators: NonAssignment
 BreakBeforeBraces: Custom
 BraceWrapping:
-  AfterFunction: false
+  AfterFunction: true
   AfterClass: true
   AfterStruct: true
   AfterControlStatement: true

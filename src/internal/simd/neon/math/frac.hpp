@@ -39,4 +39,4 @@ arch::tensor<_Tp>& frac_(arch::tensor<_Tp>& t)
 
   return t;
 }
-}
+}  // namespace internal::simd::neon

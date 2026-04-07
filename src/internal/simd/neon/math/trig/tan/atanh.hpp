@@ -51,4 +51,4 @@ arch::tensor<_Tp>& atanh_(arch::tensor<_Tp>& t)
   return t;
 }
 
-}
+}  // namespace internal::simd::neon

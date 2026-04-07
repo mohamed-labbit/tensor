@@ -42,4 +42,4 @@ double mean(const arch::tensor<_Tp>& t)
   return m / static_cast<double>(data_.size());
 }
 
-}
+}  // namespace internal::simd::neon

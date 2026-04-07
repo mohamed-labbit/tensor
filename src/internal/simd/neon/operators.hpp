@@ -1,8 +1,8 @@
 #pragma once
 
 #include "concepts.hpp"
-#include "tensor.hpp"
 #include "internal/simd/neon/alias.hpp"
+#include "tensor.hpp"
 
 
 namespace internal::simd::neon {
@@ -638,4 +638,4 @@ arch::tensor<_Tp>& operator_divide_eq(arch::tensor<_Tp>& t, const arch::tensor<_
 
   return t;
 }
-}
+}  // namespace internal::simd::neon

@@ -67,4 +67,4 @@ arch::tensor<_Tp>& bitwise_xor_(arch::tensor<_Tp>& t, const arch::tensor<_Tp>& o
   return t;
 }
 
-}
+}  // namespace internal::simd::neon

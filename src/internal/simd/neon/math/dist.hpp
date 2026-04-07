@@ -73,4 +73,4 @@ arch::tensor<_Tp>& dist_(arch::tensor<_Tp>& t, const _Tp value)
   return t;
 }
 
-}
+}  // namespace internal::simd::neon

@@ -62,4 +62,4 @@ arch::tensor<_Tp>& clipped_relu_(arch::tensor<_Tp>& t, const _Tp clip_limit)
   return t;
 }
 
-}
+}  // namespace internal::simd::neon

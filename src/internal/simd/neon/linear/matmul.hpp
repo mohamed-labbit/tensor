@@ -1,7 +1,8 @@
 #pragma once
 
-#include "tensor.hpp"
 #include <vector>
+
+#include "tensor.hpp"
 
 
 namespace internal::simd::neon {
@@ -171,4 +172,4 @@ arch::tensor<_Tp> matmul(const arch::tensor<_Tp>& t, const arch::tensor<_Tp>& ot
   return self(std::move(ret_sh), std::move(ret_d));
 }
 
-}
+}  // namespace internal::simd::neon

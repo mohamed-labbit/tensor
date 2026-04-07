@@ -7,7 +7,7 @@
 
 static bool using_neon()
 {
-/*
+  /*
 #ifdef __ARM_NEON
 return true;
 #endif

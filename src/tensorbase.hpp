@@ -1,12 +1,14 @@
 #pragma once
 
-#include "macros.hpp"
-#include "shape.hpp"
 #include <arm_neon.h>
+#include <stdint.h>
+
 #include <cstdint>
 #include <cstdlib>
-#include <stdint.h>
 #include <vector>
+
+#include "macros.hpp"
+#include "shape.hpp"
 
 using _s8  = int8_t;
 using _s16 = int16_t;
@@ -39,10 +41,7 @@ using neon_f64 = float64x2_t;
 
 constexpr int _ARM64_REG_WIDTH = 128;  // 128 bit wide register
 
-enum class Device : int {
-  CPU,
-  CUDA
-};
+enum class Device : int { CPU, CUDA };
 
 template<class _Tp, typename Container = std::vector<_Tp>>
 class TensorBase
@@ -113,7 +112,6 @@ class TensorBase
       __shape_(sh),
       __device_(dev)
   {
-
     if (d.size() != static_cast<std::size_t>(__shape_.flatten_size()))
     {
       throw std::invalid_argument("Initial data vector must match the tensor size : " + std::to_string(d.size())

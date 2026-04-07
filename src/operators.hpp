@@ -205,7 +205,7 @@ arch::tensor<_Tp> arch::tensor<_Tp>::operator-(const tensor& other) const
 template<class _Tp>
 arch::tensor<_Tp> arch::tensor<_Tp>::operator-(const value_type value) const
 {
-/*
+  /*
   if (using_neon())
   {
     return internal::simd::neon::operator_minus(*this, value);

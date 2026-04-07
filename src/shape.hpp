@@ -1,7 +1,8 @@
 #pragma once
 
-#include "stride.hpp"
 #include <vector>
+
+#include "stride.hpp"
 
 
 namespace shape {
@@ -150,4 +151,4 @@ struct Shape
   }
 };
 
-}  // namespace tensor
+}  // namespace shape

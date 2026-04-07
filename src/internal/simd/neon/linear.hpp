@@ -101,4 +101,4 @@ arch::tensor<_Tp> absolute_(const arch::tensor<_Tp>& t, const arch::tensor<_Tp>&
   return self(std::move(t.shape()), std::move(a));
 }
 
-}
+}  // namespace internal::simd::neon

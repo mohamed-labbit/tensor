@@ -38,4 +38,4 @@ arch::tensor<_Tp>& abs_(arch::tensor<_Tp>& t)
   return t;
 }
 
-}
+}  // namespace internal::simd::neon

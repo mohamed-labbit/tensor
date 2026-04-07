@@ -41,4 +41,4 @@ arch::tensor<_Tp>& cos_(arch::tensor<_Tp>& t)
   return t;
 }
 
-}
+}  // namespace internal::simd::neon

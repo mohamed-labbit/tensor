@@ -350,4 +350,4 @@ inline arch::tensor<bool> less(const arch::tensor<_Tp>& t, const arch::tensor<_T
   return a;
 }
 
-}
+}  // namespace internal::simd::neon

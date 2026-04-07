@@ -63,8 +63,9 @@ arch::tensor<_Tp> arch::tensor<_Tp>::cat(const std::vector<arch::tensor<_Tp>>& _
     {
       if (i != _dim && this->shape_()[i] != t.shape_()[i])
       {
-        throw error::shape_error("Cannot concatenate tensors with different shapes along non-concatenation "
-                                 "dimensions");
+        throw error::shape_error(
+          "Cannot concatenate tensors with different shapes along non-concatenation "
+          "dimensions");
       }
     }
   }

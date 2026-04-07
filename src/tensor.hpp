@@ -4,8 +4,11 @@
 
 #pragma once
 
-#include <algorithm>
 #include <arm_neon.h>
+#include <omp-tools.h>
+#include <omp.h>
+
+#include <algorithm>
 #include <array>
 #include <atomic>
 #include <bit>
@@ -22,8 +25,6 @@
 #include <limits>
 #include <memory>
 #include <numeric>
-#include <omp-tools.h>
-#include <omp.h>
 #include <optional>
 #include <random>
 #include <stack>
@@ -1233,8 +1234,8 @@ TENSOR_NODISCARD TENSOR_INLINE _f32 arch::tensor<_Tp>::frac(const_reference valu
 }
 
 template<class _Tp>
-TENSOR_INLINE typename arch::tensor<_Tp>::index_type
-arch::tensor<_Tp>::compute_outer_size(const index_type dimension) const
+TENSOR_INLINE typename arch::tensor<_Tp>::index_type arch::tensor<_Tp>::compute_outer_size(
+  const index_type dimension) const
 {
   // just a placeholder for now
   return 0;
@@ -1302,8 +1303,8 @@ void arch::tensor<_Tp>::printRecursive(std::size_t index, std::size_t depth, con
 }
 
 template<class _Tp>
-TENSOR_NODISCARD TENSOR_INLINE std::size_t
-arch::tensor<_Tp>::computeStride(std::size_t dimension, const shape_type& shape) const TENSOR_NOEXCEPT
+TENSOR_NODISCARD TENSOR_INLINE std::size_t arch::tensor<_Tp>::computeStride(
+  std::size_t dimension, const shape_type& shape) const TENSOR_NOEXCEPT
 {
   std::size_t stride = 1;
 
@@ -1367,7 +1368,6 @@ class arch::tensor<bool>: public TensorBase<bool>
       shape_(sh),
       device_(dev)
   {
-
     if (d.size() != static_cast<std::size_t>(shape_.flatten_size()))
     {
       throw std::invalid_argument("Initial data vector must match the tensor size : " + std::to_string(d.size())
@@ -1394,7 +1394,6 @@ class arch::tensor<bool>: public TensorBase<bool>
       shape_(sh),
       device_(d)
   {
-
     if (init_list.size() != static_cast<std::size_t>(shape_.flatten_size()))
     {
       throw std::invalid_argument("Initializer list size must match tensor size");
@@ -1663,8 +1662,10 @@ class arch::tensor<bool>: public TensorBase<bool>
     return arch::tensor<bool>(std::move(this->shape()), std::move(ret));
   }
 
-  arch::tensor<bool>
-  slice(index_type dimension, std::optional<index_type> start, std::optional<index_type> end, index_type step) const
+  arch::tensor<bool> slice(index_type                dimension,
+                           std::optional<index_type> start,
+                           std::optional<index_type> end,
+                           index_type                step) const
   {
     if (dimension < 0 || dimension >= static_cast<index_type>(data_.size()))
     {
@@ -1766,9 +1767,10 @@ class arch::tensor<bool>: public TensorBase<bool>
 
     if (s != data_.size())
     {
-      throw error::shape_error("input shape must have size of element equal to the current number of elements in "
-                               "the"
-                               "tensor data");
+      throw error::shape_error(
+        "input shape must have size of element equal to the current number of elements in "
+        "the"
+        "tensor data");
     }
 
     return self(std::move(shape_), std::move(d));
@@ -1846,9 +1848,10 @@ class arch::tensor<bool>: public TensorBase<bool>
       {
         if (i != dimension && shape_[i] != t.shape_[i])
         {
-          throw error::shape_error("Cannot concatenate tensors with different shapes along non-concatenation "
+          throw error::shape_error(
+            "Cannot concatenate tensors with different shapes along non-concatenation "
 
-                                   "dimensions");
+            "dimensions");
         }
       }
     }

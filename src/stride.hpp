@@ -1,8 +1,9 @@
 #pragma once
 
-#include "error.hpp"
 #include <iostream>
 #include <vector>
+
+#include "error.hpp"
 
 
 namespace shape {

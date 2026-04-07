@@ -322,4 +322,4 @@ arch::tensor<_s64> int64_(const arch::tensor<_Tp>& t)
   return arch::tensor<_s64>(std::move(t.shape()), std::move(ret));
 }
 
-}
+}  // namespace internal::simd::neon
