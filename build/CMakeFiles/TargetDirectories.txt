@@ -1,4 +1,0 @@
-/Users/mohamedrabbit/code/tensor/build/CMakeFiles/tensor_test.dir
-/Users/mohamedrabbit/code/tensor/build/CMakeFiles/test.dir
-/Users/mohamedrabbit/code/tensor/build/CMakeFiles/edit_cache.dir
-/Users/mohamedrabbit/code/tensor/build/CMakeFiles/rebuild_cache.dir
