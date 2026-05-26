@@ -1,8 +1,8 @@
 #pragma once
 
-#include "internal/simd/neon/bit/and.hpp"
-#include "tensor.hpp"
-#include "types.hpp"
+#include "../internal/simd/neon/bit/and.hpp"
+#include "../tensor.hpp"
+#include "../types.hpp"
 
 
 template<class _Tp>
